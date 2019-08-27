@@ -74,7 +74,7 @@ jobs:
           at: ~/
       - run: ls -la cypress
       - run: ls -la cypress/integration
-      - run:
+      - run: npm run e2e
           name: Running cypress tests 3
           command: $(npm bin)/cypress run --spec cypress/integration/sample3.spec.js
       - store_artifacts:
