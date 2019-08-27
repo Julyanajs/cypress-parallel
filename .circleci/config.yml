@@ -54,3 +54,13 @@ workflows:
       - test:
           requires:
             - build
+  schedule-workflow:
+    triggers:
+      -schedule:
+         cron: "0 * * * *"
+         filters:
+          branches:
+           only:
+             - master
+    jobs:
+    - build
