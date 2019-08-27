@@ -54,7 +54,6 @@ workflows:
       - test:
           requires:
             - build
-  schedule-workflow:
     triggers:
       schedule:
          cron: "0 * * * *"
@@ -62,5 +61,5 @@ workflows:
            branches:
              only:
                - master
-     jobs:
-       - build
+    jobs:
+      - build
