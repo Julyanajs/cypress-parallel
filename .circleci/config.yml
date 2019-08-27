@@ -56,7 +56,6 @@ workflows:
             - build
   workflows:
    version: 2
-   nightly:
      triggers:
        - schedule:
            cron: "0 0 * * *"
@@ -65,4 +64,5 @@ workflows:
                only:
                  - master
      jobs:
+       - build
        - test
