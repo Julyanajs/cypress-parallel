@@ -39,8 +39,6 @@ jobs:
       - run: ls -la cypress
       - run: ls -la cypress/integration
       - run:
-      - restore_cache:
-         key: v3-dep-cache-{{ checksum "package.json" }}
           name: Running cypress tests
           command: npm run e2e
       - store_artifacts:
