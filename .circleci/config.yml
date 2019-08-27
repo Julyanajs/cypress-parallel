@@ -56,7 +56,7 @@ workflows:
             - build
   schedule-workflow:
     triggers:
-     - schedule:
+      schedule:
          cron: "0 * * * *"
          filters:
            branches:
