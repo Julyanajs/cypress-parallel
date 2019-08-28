@@ -63,6 +63,12 @@
         }
       ],
       "steps": [
+        "checkout",
+        {
+          "attach_workspace": {
+            "at": "~/"
+          }
+        },
         {
           "attach_workspace": {
             "at": "/tmp/mochawesome-report"
@@ -70,9 +76,17 @@
         },
         {
           "run": "ls /tmp/mochawesome-report"
+        },
+        {
+          "run": "node ./lib/combine.js"
+        },
+        {
+          "store_artifacts": {
+            "path": "mochareports"
+          }
         }
       ]
-    },
+    },    
     "workflows": {
       "version": 2,
       "build_and_test": {
