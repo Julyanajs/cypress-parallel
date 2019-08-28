@@ -2,10 +2,6 @@ version: 2
 jobs:
   build:
     working_directory: ~/tmp
-    docker:
-      - image: 'cypress/base:10'
-        environment:
-          TERM: xterm
     combine_reports:
       working_directory: ~/tmp
       docker:
@@ -22,6 +18,10 @@ jobs:
         - run: node ./lib/combine.js
         - store_artifacts:
             path: mochareports
+    docker:
+      - image: 'cypress/base:10'
+        environment:
+          TERM: xterm
     steps:
       - checkout
       - run: pwd

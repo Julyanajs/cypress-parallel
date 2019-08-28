@@ -3,14 +3,6 @@
     "jobs": {
       "build": {
         "working_directory": "~/tmp",
-        "docker": [
-          {
-            "image": "cypress/base:10",
-            "environment": {
-              "TERM": "xterm"
-            }
-          }
-        ],
         "combine_reports": {
           "working_directory": "~/tmp",
           "docker": [
@@ -45,7 +37,15 @@
               }
             }
           ]
-        },    
+        },
+        "docker": [
+          {
+            "image": "cypress/base:10",
+            "environment": {
+              "TERM": "xterm"
+            }
+          }
+        ],  
         "steps": [
           "checkout",
           {
@@ -67,6 +67,7 @@
           {
             "run": "npm ci"
           },
+          
           {
             "save_cache": {
               "key": "v2-deps-{{ .Branch }}-{{ checksum \"package-lock.json\" }}",
