@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Julyanajs/cypress-parallel#readme",
   "devDependencies": {
-    "cypress": "^3.4.1"
+    "cypress": "^3.4.1",
+    "write-yaml": "^1.0.0"
   }
 }
