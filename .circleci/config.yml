@@ -2,7 +2,7 @@ version: 2
 
 jobs:
   build:
-    working_directory: ~/tmp
+    working_directory: /tmp/persist_to_workspace
     docker:
       - image: 'cypress/base:10'
         environment:
@@ -28,14 +28,14 @@ jobs:
             - .cache
             - tmp
     test1:
-    working_directory: ~/tmp
+    working_directory: /tmp/persist_to_workspace
     docker:
       - image: 'cypress/base:10'
         environment:
           TERM: xterm
     steps:
       - attach_workspace:
-          at: ~/
+          at: /tmp/persist_to_workspace
       - run: ls -la cypress
       - run: ls -la cypress/integration
       - run:
@@ -46,14 +46,14 @@ jobs:
       - store_artifacts:
           path: cypress/screenshots
   test2:
-    working_directory: ~/tmp
+    working_directory: /tmp/persist_to_workspace
     docker:
       - image: 'cypress/base:10'
         environment:
           TERM: xterm
     steps:
       - attach_workspace:
-          at: ~/
+          at: /tmp/persist_to_workspace
       - run: ls -la cypress
       - run: ls -la cypress/integration
       - run:
@@ -64,14 +64,14 @@ jobs:
       - store_artifacts:
           path: cypress/screenshots
   test3:
-    working_directory: ~/tmp
+    working_directory: /tmp/persist_to_workspace
     docker:
       - image: 'cypress/base:10'
         environment:
           TERM: xterm
     steps:
       - attach_workspace:
-          at: ~/
+          at: /tmp/persist_to_workspace
       - run: ls -la cypress
       - run: ls -la cypress/integration
       - run:
@@ -82,14 +82,14 @@ jobs:
       - store_artifacts:
           path: cypress/screenshots
   test4:
-    working_directory: ~/tmp
+    working_directory: /tmp/persist_to_workspace
     docker:
       - image: 'cypress/base:10'
         environment:
           TERM: xterm
     steps:
       - attach_workspace:
-          at: ~/
+          at: /tmp/persist_to_workspace
       - run: ls -la cypress
       - run: ls -la cypress/integration
       - run:
