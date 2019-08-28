@@ -10,6 +10,9 @@ jobs:
       - checkout
       - run: pwd
       - run: ls
+      - attach_workspace:
+          - at: /tmp/mochawesome-report
+          - run: ls /tmp/mochawesome-report
       - restore_cache:
           keys:
             - 'v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}'
@@ -48,6 +51,11 @@ jobs:
           path: cypress/screenshots
       - store_artifacts:
           path: mochawesome-report
+      - persist_to_workspace:
+          root: mochawesome-report
+          paths:
+            - test1.json
+            - test1.html
   test2:
     working_directory: ~/tmp
     docker:
@@ -70,6 +78,11 @@ jobs:
           path: cypress/screenshots
       - store_artifacts:
           path: mochawesome-report
+      - persist_to_workspace:
+          root: mochawesome-report
+          paths:
+            - test2.json
+            - test2.html
   test3:
     working_directory: ~/tmp
     docker:
@@ -92,6 +105,11 @@ jobs:
           path: cypress/screenshots
       - store_artifacts:
           path: mochawesome-report
+      - persist_to_workspace:
+          root: mochawesome-report
+          paths:
+            - test3.json
+            - test3.html
   test4:
     working_directory: ~/tmp
     docker:
@@ -114,6 +132,11 @@ jobs:
           path: cypress/screenshots
       - store_artifacts:
           path: mochawesome-report
+      - persist_to_workspace:
+          root: mochawesome-report
+          paths:
+            - test4.json
+            - test4.html
 workflows:
   version: 2
   build_and_test:
@@ -131,3 +154,9 @@ workflows:
       - test4:
           requires:
             - build
+      - combine_reports:
+          requires:
+            - test1
+            - test2
+            - test3
+            - test4

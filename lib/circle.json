@@ -20,6 +20,21 @@
             "run": "ls"
           },
           {
+          
+        "attach_workspace": [
+         {
+            "at": "/tmp/mochawesome-report"
+          
+          },
+
+          {
+            "run": "ls /tmp/mochawesome-report"
+          }
+        ]
+          },
+         
+       
+          {
             "restore_cache": {
               "keys": [
                 "v2-deps-{{ .Branch }}-{{ checksum \"package-lock.json\" }}",
